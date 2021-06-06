@@ -9,3 +9,4 @@ export { default as BreadCrumb } from "./BreadCrumb/index";
 export { default as Title } from "./Title/index";
 export { default as AlertInfo } from "./AlertInfo/index";
 export { default as PreFooter } from "./PreFooter/PreFooter";
+export { default as Meta } from "./Meta/Meta";

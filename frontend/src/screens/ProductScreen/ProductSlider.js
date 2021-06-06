@@ -1,33 +1,33 @@
-import React, { useState } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import SwiperCore, { Thumbs } from "swiper/core";
-import { makeStyles } from "@material-ui/core/styles";
+import React, {useState} from 'react';
+import {Swiper, SwiperSlide} from 'swiper/react';
+import SwiperCore, {Thumbs} from 'swiper/core';
+import {makeStyles} from '@material-ui/core/styles';
 
-SwiperCore.use([Thumbs]);
+SwiperCore.use ([Thumbs]);
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles (theme => ({
   root: {},
   thumb: {
-    marginTop: theme.spacing(3),
-    margin: theme.spacing(0, 4),
-    "& img": {
+    marginTop: theme.spacing (3),
+    margin: theme.spacing (0, 4),
+    '& img': {
       height: 150,
     },
   },
 }));
 
-const ProductSlider = ({ images }) => {
-  const classes = useStyles();
+const ProductSlider = ({images}) => {
+  const classes = useStyles ();
 
-  const [thumbsSwiper, setThumbsSwiper] = useState(null);
+  const [thumbsSwiper, setThumbsSwiper] = useState (null);
 
   return (
     <main>
       {/* Main Swiper -> pass thumbs swiper instance */}
-      <Swiper thumbs={{ swiper: thumbsSwiper }}>
-        {images.map((item, index) => (
+      <Swiper thumbs={{swiper: thumbsSwiper}}>
+        {images.map ((item, index) => (
           <SwiperSlide key={index}>
-            <img src={item} alt={item} style={{ width: "100%" }} />
+            <img src={item} alt={item} style={{width: '100%'}} />
           </SwiperSlide>
         ))}
       </Swiper>
@@ -42,9 +42,9 @@ const ProductSlider = ({ images }) => {
         className={classes.thumb}
         spaceBetween={10}
       >
-        {images.map((item, index) => (
+        {images.map ((item, index) => (
           <SwiperSlide key={index}>
-            <img src={item} alt={item} style={{ width: "100%" }} />
+            <img src={item} alt={item} style={{width: '100%'}} />
           </SwiperSlide>
         ))}
       </Swiper>

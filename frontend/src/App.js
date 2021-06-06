@@ -20,38 +20,31 @@ import AdminHome from "./screens/adminDashbord/AdminHome";
 import { ThemeProvider } from "@material-ui/core/styles";
 import { theme } from "./theme";
 import Home from "./screens/homeScreen/Home";
-import { Footer } from "./components/index";
+import { Meta } from "./components/index";
 
 const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      {/* <Route render={({ history }) => <Header history={history} />} /> */}
-      <main style={{ minHeight: "80vh" }}>
-        <Switch>
-          <Route path="/" exact component={Home} />
-          <Route path="/products" exact component={Products} />
-          <Route path="/page/:pageNumber" component={Products} exact />
-          <Route path="/search/:keyword" component={Products} exact />
-          <Route
-            path="/search/:keyword/page/:pageNumber"
-            component={Products}
-          />
-          <Route path="/signin" exact component={Login} />
-          <Route path="/register" exact component={Register} />
-          <Route path="/shipping" exact component={AddressForm} />
-          <Route path="/payment" exact component={PaymentScreen} />
-          <Route path="/ordersummary" exact component={OrderSummary} />
-          <Route path="/order/:id" component={OrderDetails} />
-          <Route path="/products/:id" component={ProductScreen} />
-          <Privateroute path="/myorders" component={OrderHistoryScreen} />
-          <Privateroute path="/adminDash" component={AdminHome} />
-          <Privateroute path="/myaccount/profile" component={UserForm} />
-          <Privateroute path="/myaccount" component={MyAccount} />
-          <Route path="/cart/:id?" component={CartScreen} />
-        </Switch>
-      </main>
-      <Footer />
+      <Switch>
+        <Route path="/" exact component={Home} />
+        <Route path="/products" exact component={Products} />
+        <Route path="/page/:pageNumber" component={Products} exact />
+        <Route path="/search/:keyword" component={Products} exact />
+        <Route path="/search/:keyword/page/:pageNumber" component={Products} />
+        <Route path="/signin" exact component={Login} />
+        <Route path="/register" exact component={Register} />
+        <Route path="/shipping" exact component={AddressForm} />
+        <Route path="/payment" exact component={PaymentScreen} />
+        <Route path="/ordersummary" exact component={OrderSummary} />
+        <Route path="/order/:id" component={OrderDetails} />
+        <Route path="/products/:id" component={ProductScreen} />
+        <Privateroute path="/myorders" component={OrderHistoryScreen} />
+        <Privateroute path="/adminDash" component={AdminHome} />
+        <Privateroute path="/myaccount/profile" component={UserForm} />
+        <Privateroute path="/myaccount" component={MyAccount} />
+        <Route path="/cart/:id?" component={CartScreen} />
+      </Switch>
     </ThemeProvider>
   );
 };

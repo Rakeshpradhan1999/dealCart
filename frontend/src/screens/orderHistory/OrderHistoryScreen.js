@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { listOrderMine } from "../../redux/actions/orderAction";
-import { Title, Header, Loading } from "../../components/index";
+import { Title, Header, Loading, Footer } from "../../components/index";
 import VisibilityIcon from "@material-ui/icons/Visibility";
 import {
   Container,
@@ -42,6 +42,7 @@ const OrderHistoryScreen = ({ history }) => {
   return (
     <>
       <Header history={history} />
+      <div style={{ marginTop: "100px" }} />
       {loading ? (
         <Loading />
       ) : (
@@ -118,6 +119,7 @@ const OrderHistoryScreen = ({ history }) => {
           </Grid>
         </Container>
       )}
+      <Footer />
     </>
   );
 };

@@ -23,16 +23,17 @@ import {
   USER_UPDATE_FAIL,
   USER_UPDATE_REQUEST,
   USER_UPDATE_SUCCESS,
-} from "../types/userTypes";
+} from '../types/userTypes';
 
 export const userRegisterReducer = (state = {}, action) => {
   switch (action.type) {
     case USER_REGISTER_REQUEST:
-      return { loading: true };
+      return {loading: true};
     case USER_REGISTER_SUCCESS:
       return {
         loading: false,
         userInfo: action.payload,
+        success: true,
       };
     case USER_REGISTER_FAIL:
       return {
@@ -47,7 +48,7 @@ export const userRegisterReducer = (state = {}, action) => {
 export const userSignInReducer = (state = {}, action) => {
   switch (action.type) {
     case USER_SIGNIN_REQUEST:
-      return { loading: true };
+      return {loading: true};
     case USER_SIGNIN_SUCCESS:
       return {
         loading: false,
@@ -64,14 +65,14 @@ export const userSignInReducer = (state = {}, action) => {
       return state;
   }
 };
-export const userDetailsReducer = (state = { loading: {} }, action) => {
+export const userDetailsReducer = (state = {loading: {}}, action) => {
   switch (action.type) {
     case USER_DETAILS_REQUEST:
-      return { loading: true };
+      return {loading: true};
     case USER_DETAILS_SUCCESS:
-      return { loading: false, user: action.payload };
+      return {loading: false, user: action.payload};
     case USER_DETAILS_FAIL:
-      return { loading: false, error: action.payload };
+      return {loading: false, error: action.payload};
 
     default:
       return state;
@@ -80,11 +81,11 @@ export const userDetailsReducer = (state = { loading: {} }, action) => {
 export const userUpdateProfileReducer = (state = {}, action) => {
   switch (action.type) {
     case USER_UPDATE_REQUEST:
-      return { loading: true };
+      return {loading: true};
     case USER_UPDATE_SUCCESS:
-      return { loading: false, success: true };
+      return {loading: false, success: true};
     case USER_UPDATE_FAIL:
-      return { loading: false, error: action.payload, success: false };
+      return {loading: false, error: action.payload, success: false};
     case USER_PROFILE_RESET:
       return {};
 
@@ -93,13 +94,10 @@ export const userUpdateProfileReducer = (state = {}, action) => {
   }
 };
 
-export const userListReducer = (
-  state = { loading: true, users: [] },
-  action
-) => {
+export const userListReducer = (state = {loading: true, users: []}, action) => {
   switch (action.type) {
     case USER_LIST_REQUEST:
-      return { loading: true };
+      return {loading: true};
     case USER_LIST_SUCCESS:
       return {
         loading: false,
@@ -108,33 +106,33 @@ export const userListReducer = (
         count: action.payload.results,
       };
     case USER_LIST_FAIL:
-      return { loading: false, error: action.payload, users: [] };
+      return {loading: false, error: action.payload, users: []};
     default:
       return state;
   }
 };
 
-export const userDeleteReducer = (state = { loading: true }, action) => {
+export const userDeleteReducer = (state = {loading: true}, action) => {
   switch (action.type) {
     case USER_DELETE_REQUEST:
-      return { loading: true };
+      return {loading: true};
     case USER_DELETE_SUCCESS:
-      return { loading: false, success: true };
+      return {loading: false, success: true};
     case USER_DELETE_FAIL:
-      return { loading: false, error: action.payload, success: false };
+      return {loading: false, error: action.payload, success: false};
     default:
       return state;
   }
 };
 
-export const userUpdateReducer = (state = { user: {} }, action) => {
+export const userUpdateReducer = (state = {user: {}}, action) => {
   switch (action.type) {
     case USER_ADMIN_UPDATE_REQUEST:
-      return { loading: true };
+      return {loading: true};
     case USER_ADMIN_UPDATE_SUCCESS:
-      return { loading: false, success: true };
+      return {loading: false, success: true};
     case USER_ADMIN_UPDATE_FAIL:
-      return { loading: false, error: action.payload, success: false };
+      return {loading: false, error: action.payload, success: false};
 
     case USER_ADMIN_UPDATE_RESET:
       return {

@@ -14,14 +14,18 @@ import useStyles from "./style";
 import { AiOutlineLogout } from "react-icons/ai";
 import { Link, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { signout } from "../../redux/actions/userActions";
 
 const SideBar = ({ url }) => {
+  const dispatch = useDispatch();
   const userSignin = useSelector((state) => state.userSignin);
   const { userInfo } = userSignin;
 
   const classes = useStyles();
   const location = useLocation();
-
+  const logoutHandler = () => {
+    dispatch(signout());
+  };
   return (
     <Drawer
       variant={"permanent"}
@@ -53,7 +57,11 @@ const SideBar = ({ url }) => {
           </MenuItem>
         ))}
         <Divider color={"primary"} />
-        <MenuItem>
+        <MenuItem
+          onClick={() => {
+            logoutHandler();
+          }}
+        >
           <ListItemIcon>
             <AiOutlineLogout />
           </ListItemIcon>

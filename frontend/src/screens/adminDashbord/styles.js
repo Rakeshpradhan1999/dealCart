@@ -3,8 +3,8 @@ import { makeStyles } from "@material-ui/core/styles";
 const useStyles = makeStyles((theme) => ({
   bg: {
     backgroundColor: theme.palette.primary.light,
-    minHeight: "130vh",
-    padding: "40px 0 100px 0 ",
+    minHeight: "90vh",
+    padding: "40px 0 30px 0 ",
   },
   root: {
     padding: theme.spacing(0, 3.8, 3, 3.8),

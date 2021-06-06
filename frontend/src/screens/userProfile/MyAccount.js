@@ -7,7 +7,7 @@ import {
   updateUserDetails,
 } from "../../redux/actions/userActions";
 import { USER_PROFILE_RESET } from "../../redux/types/userTypes";
-import { Loading, Header, Title } from "../../components/index";
+import { Loading, Header, Title, Footer } from "../../components/index";
 import {
   Container,
   Grid,
@@ -75,6 +75,7 @@ const MyAccount = (props) => {
   return (
     <>
       <Header history={props.history} />
+      <div style={{ marginTop: "100px" }} />
       {loading || loadingUpdate ? (
         <Loading />
       ) : (
@@ -189,6 +190,7 @@ const MyAccount = (props) => {
           </Grid>
         </Container>
       )}
+      <Footer />
     </>
   );
 };

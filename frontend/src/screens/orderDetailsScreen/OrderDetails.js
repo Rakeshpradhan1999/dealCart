@@ -2,7 +2,13 @@ import React, { useEffect, useState } from "react";
 import { PayPalButton } from "react-paypal-button-v2";
 import LgCart from "../cartScreen/LgCart";
 import { useDispatch, useSelector } from "react-redux";
-import { Header, Loading, AlertInfo, Title } from "../../components/index";
+import {
+  Header,
+  Loading,
+  AlertInfo,
+  Title,
+  Footer,
+} from "../../components/index";
 import axios from "axios";
 import useStyles from "./styles";
 import Alert from "@material-ui/lab/Alert";
@@ -277,6 +283,7 @@ const OrderDetails = ({ history, match }) => {
           </Grid>
         </Grid>
       </Container>
+      <Footer />
     </div>
   );
 };

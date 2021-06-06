@@ -25,6 +25,7 @@ import {
 } from "@material-ui/core";
 import Header from "../header/Header";
 import BreadCrumb from "../BreadCrumb/index";
+import { Meta } from "../index";
 
 const Products = ({ match, history }) => {
   const classes = useStyles();
@@ -45,6 +46,7 @@ const Products = ({ match, history }) => {
   return (
     <main>
       <Header history={history} />
+      <Meta title="Shop" />
       <Box mt={12} />
       <Container xs={12} style={{ marginTop: 10 }}>
         <Grid container spacing={2}>

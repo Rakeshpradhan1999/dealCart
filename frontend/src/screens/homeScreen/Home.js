@@ -1,3 +1,4 @@
+/* eslint-disable no-mixed-operators */
 import React, { useEffect, useState } from "react";
 import {
   Header,
@@ -5,6 +6,9 @@ import {
   Title,
   ProductsSlider,
   PreFooter,
+  Footer,
+  Loading,
+  Meta,
 } from "../../components/index";
 import Banner from "./Banner/Banner";
 import { Container, Grid, Box } from "@material-ui/core";
@@ -48,12 +52,14 @@ const Home = ({ history }) => {
     dispatch(womenProductsAction());
   }, [dispatch]);
 
-  products && console.log(products);
 
   const classes = useStyles();
-  return (
+  return loading || kidsLoading || womenLoading || menLoading ? (
+    <Loading />
+  ) : (
     <>
       <div className={classes.root}>
+        <Meta />
         <Header history={history} />
         <Box mt={9} />
         <HomeSlider />
@@ -96,6 +102,7 @@ const Home = ({ history }) => {
         </Container>
         <PreFooter />
       </div>
+      <Footer />
     </>
   );
 };

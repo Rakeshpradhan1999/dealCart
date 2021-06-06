@@ -5,7 +5,7 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    height: "100vp",
+    height: "80vh",
     width: "100%",
     maxWidth: "400px",
     margin: "auto",

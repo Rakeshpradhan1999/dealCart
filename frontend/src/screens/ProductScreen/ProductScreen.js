@@ -29,6 +29,7 @@ import {
 } from "@material-ui/core";
 import ProductSlider from "./ProductSlider";
 import useStyles from "./styles";
+import { Footer, Meta } from "../../components/index";
 const ProductScreen = ({ match, history }) => {
   const classes = useStyles();
   const productId = match.params.id;
@@ -78,6 +79,7 @@ const ProductScreen = ({ match, history }) => {
   return (
     <>
       <Header history={history} />
+      <Meta title={product.name} />
       <Box mt={14} />
 
       <Container xs={12}>
@@ -327,6 +329,7 @@ const ProductScreen = ({ match, history }) => {
           )}
         </Box>
       </Container>
+      <Footer />
     </>
   );
 };

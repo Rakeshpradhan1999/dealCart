@@ -4,7 +4,7 @@ import { cartAction, cartRemove } from "../../redux/actions/cartAction";
 import EmptyCart from "../../components/emptyPages/EmptyCart";
 import LgCart from "./LgCart";
 import MobileCart from "./MobileCart";
-import { Header } from "../../components/index";
+import { Footer, Header, Meta } from "../../components/index";
 import {
   Container,
   Grid,
@@ -46,6 +46,8 @@ const CartScreen = ({ match, history }) => {
   return (
     <Box>
       <Header history={history} />
+      <div style={{ marginTop: "100px" }} />
+      <Meta title="Your Cart" />
       <Box mt={12} />
 
       {cartItems.length <= 0 ? (
@@ -127,6 +129,9 @@ const CartScreen = ({ match, history }) => {
           </Grid>
         </Container>
       )}
+      <Box className={classes.footer}>
+        <Footer />
+      </Box>
     </Box>
   );
 };
