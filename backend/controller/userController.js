@@ -71,7 +71,7 @@ export const forgotPassword = async (req, res, next) => {
     subject: 'Password Reset Link',
     html: `
                 <h1>Please use the following link to Set your password</h1>
-                <p>${process.env.CLIENT}/forgot_password/${token}</p>
+                <p>${process.env.CLIENT}/user/reset_password/${token}</p>
                 <hr />
                 <p>This email may contain sensitive information</p>
                 <p>${process.env.CLIENT}</p>
@@ -94,6 +94,7 @@ export const forgotPassword = async (req, res, next) => {
 //reset Password
 export const resetPassword = async (req, res, next) => {
   const {resetPasswordLink, newPassword} = req.body;
+  console.log (req.body.newPassword);
 
   if (resetPasswordLink) {
     jwt.verify (resetPasswordLink, process.env.JWT_SECRET, function (
@@ -112,7 +113,7 @@ export const resetPassword = async (req, res, next) => {
         }
 
         const updateFields = {
-          password: newPassword,
+          password: bcrypt.hashSync (newPassword, 8),
           resetPasswordLink: '',
         };
         user = _.extend (user, updateFields);

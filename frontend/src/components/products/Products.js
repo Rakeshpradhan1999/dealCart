@@ -1,14 +1,11 @@
-import React, { useEffect, useState } from "react";
-import Card from "../productCard/Card";
-import useStyles from "./style";
-import Error from "../error/Error";
-import { listProducts } from "../../redux/actions/productAction";
-import { useSelector, useDispatch } from "react-redux";
-import Pagination from "@material-ui/lab/Pagination";
-import Skeleton from "@material-ui/lab/Skeleton";
-import Rating from "@material-ui/lab/Rating";
+import React, {useEffect, useState} from 'react';
+import Card from '../productCard/Card';
+import useStyles from './style';
+import {listProducts} from '../../redux/actions/productAction';
+import {useSelector, useDispatch} from 'react-redux';
+import Pagination from '@material-ui/lab/Pagination';
+import Skeleton from '@material-ui/lab/Skeleton';
 
-import StarIcon from "@material-ui/icons/Star";
 import {
   Container,
   Grid,
@@ -18,37 +15,37 @@ import {
   Select,
   InputLabel,
   MenuItem,
-  Divider,
   Box,
-  Checkbox,
-  FormControlLabel,
-} from "@material-ui/core";
-import Header from "../header/Header";
-import BreadCrumb from "../BreadCrumb/index";
-import { Meta } from "../index";
+} from '@material-ui/core';
+import Header from '../header/Header';
 
-const Products = ({ match, history }) => {
-  const classes = useStyles();
-  const [page, setPage] = useState(1);
-  const [limit, setLimit] = useState(20);
-  const [sortBy, setSortBy] = useState("");
+import {Meta} from '../index';
+import NotFound from '../../screens/ErrorPages/NotFound';
+
+const Products = ({match, history}) => {
+  const classes = useStyles ();
+  const [page, setPage] = useState (1);
+  const [limit, setLimit] = useState (20);
+  const [sortBy, setSortBy] = useState ('');
   const keyword = match.params.keyword;
   // const pageNumber = match.params.pageNumber || 1;
-  const dispatch = useDispatch();
-  const productList = useSelector((state) => state.productList);
-  const { loading, products, count, total } = productList;
-  console.log(products);
+  const dispatch = useDispatch ();
+  const productList = useSelector (state => state.productList);
+  const {loading, products, count, total} = productList;
 
-  useEffect(() => {
-    dispatch(listProducts(sortBy, limit, page));
-  }, [dispatch, keyword, sortBy, limit, page]);
+  useEffect (
+    () => {
+      dispatch (listProducts (sortBy, limit, page, keyword));
+    },
+    [dispatch, keyword, sortBy, limit, page]
+  );
 
   return (
     <main>
       <Header history={history} />
       <Meta title="Shop" />
       <Box mt={12} />
-      <Container xs={12} style={{ marginTop: 10 }}>
+      <Container xs={12} style={{marginTop: 10}}>
         <Grid container spacing={2}>
           {/* Header */}
 
@@ -57,7 +54,7 @@ const Products = ({ match, history }) => {
             <Grid item xs={12}>
               <Paper elevation={0} className={classes.header}>
                 <Typography variant="body1" className={classes.headertext}>
-                  Showing {products.length ? products.length : 0} of{" "}
+                  Showing {products.length ? products.length : 0} of{' '}
                   {count ? count : 0}
                 </Typography>
                 <FormControl
@@ -69,27 +66,23 @@ const Products = ({ match, history }) => {
                   <Select
                     id="shortby"
                     value={sortBy}
-                    onChange={(e) => setSortBy(e.target.value)}
+                    onChange={e => setSortBy (e.target.value)}
                     label="Short By"
                   >
-                    <MenuItem value={"-createdAt"}>Revelance</MenuItem>
-                    <MenuItem value={"rating"}>Popularity</MenuItem>
-                    <MenuItem value={"price"}>Low to High</MenuItem>
-                    <MenuItem value={"-price"}>High to low</MenuItem>
+                    <MenuItem value={'-createdAt'}>Revelance</MenuItem>
+                    <MenuItem value={'rating'}>Popularity</MenuItem>
+                    <MenuItem value={'price'}>Low to High</MenuItem>
+                    <MenuItem value={'-price'}>High to low</MenuItem>
                   </Select>
                 </FormControl>
               </Paper>
             </Grid>
             {/*  All products */}
             {loading
-              ? Array.from({ length: 12 }).map((item, index) => (
+              ? Array.from ({length: 12}).map ((item, index) => (
                   <Grid item lg={2} key={index}>
                     <Box>
-                      <Skeleton
-                        width="100%"
-                        height="200px"
-                        animation="wave"
-                      ></Skeleton>
+                      <Skeleton width="100%" height="200px" animation="wave" />
                       <Skeleton width="100%" animation="wave">
                         <Typography>.</Typography>
                       </Skeleton>
@@ -102,24 +95,25 @@ const Products = ({ match, history }) => {
                     </Box>
                   </Grid>
                 ))
-              : products.map((product) => (
-                  <Grid item lg={2} key={product._id}>
-                    <Card product={product} />
-                  </Grid>
-                ))}
+              : products.length <= 0
+                  ? <NotFound />
+                  : products.map (product => (
+                      <Grid item lg={2} key={product._id}>
+                        <Card product={product} />
+                      </Grid>
+                    ))}
           </Grid>
 
           <Grid item xs={12}>
             <Box mt={6}>
-              {total / limit > 1 && (
+              {total / limit > 1 &&
                 <Pagination
                   count={total / limit}
-                  onChange={(e, v) => setPage(v)}
+                  onChange={(e, v) => setPage (v)}
                   shape="rounded"
                   variant="outlined"
                   color="primary"
-                />
-              )}
+                />}
             </Box>
           </Grid>
         </Grid>

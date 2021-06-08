@@ -6,7 +6,6 @@ import SearchIcon from '@material-ui/icons/Search';
 import {
   AppBar,
   Toolbar,
-  Typography,
   Box,
   IconButton,
   Grid,
@@ -64,7 +63,7 @@ const useStyles = makeStyles (theme => ({
     },
   },
   menu: {
-    width: '30%',
+    width: '40%',
     display: 'block',
     '@media (max-width:1000px)': {
       display: 'none',
@@ -78,10 +77,10 @@ const useStyles = makeStyles (theme => ({
     marginBottom: '0',
   },
   navItem: {
-    padding: theme.spacing (2),
+    padding: theme.spacing (1),
   },
   search: {
-    width: '50%',
+    width: '40%',
     position: 'relative',
     margin: theme.spacing (0, 2),
     borderRadius: theme.shape.borderRadius,
@@ -112,11 +111,11 @@ const useStyles = makeStyles (theme => ({
   },
   inputInput: {
     padding: theme.spacing (1, 1, 1, 0),
-    paddingLeft: `calc(1em + ${theme.spacing (4)}px)`,
+    paddingLeft: `calc(1em + ${theme.spacing (3)}px)`,
     transition: theme.transitions.create ('width'),
     width: '100%',
     [theme.breakpoints.up ('md')]: {
-      width: '40ch',
+      width: '30ch',
     },
   },
 
@@ -159,7 +158,7 @@ const useStyles = makeStyles (theme => ({
   },
   listItem: {
     fontSize: 16,
-    padding: theme.spacing (0.5, 1),
+    padding: theme.spacing (0.5, 0.5),
     '&:hover': {
       color: theme.palette.primary.main,
     },
@@ -221,32 +220,35 @@ const Header = ({history}) => {
             </IconButton>
 
             {/* Logo */}
-            <Box className={classes.logo}>
+            <Box className={classes.logo} component={Link} to="/">
               <img src="/images/logo.png" alt="" />
             </Box>
             {/* Menu */}
             <div className={classes.menu}>
               <Grid container className={classes.menuItems}>
-                <Grid item xs={3}>
-                  <Link to={`/products`} className={classes.navItem}>
-                    {' '}
-                    Men
+                <Grid item xs={2}>
+                  <Link to={`/`} className={classes.navItem}>
+                    Home
                   </Link>
                 </Grid>
-                <Grid item xs={3}>
+                <Grid item xs={2}>
                   <Link to={`/products`} className={classes.navItem}>
-                    {' '}
-                    Women
+                    Shop
                   </Link>
                 </Grid>
-                <Grid item xs={3}>
-                  <Link to={`/products`} className={classes.navItem}>
-                    Kids
+                <Grid item xs={2}>
+                  <Link to={`/contact`} className={classes.navItem}>
+                    Contact{' '}
                   </Link>
                 </Grid>
-                <Grid item xs={3}>
-                  <Link to={`/products`} className={classes.navItem}>
-                    All
+                <Grid item xs={2}>
+                  <Link to={`/gallary`} className={classes.navItem}>
+                    Gallary
+                  </Link>
+                </Grid>
+                <Grid item xs={2}>
+                  <Link to={`/about`} className={classes.navItem}>
+                    About{' '}
                   </Link>
                 </Grid>
               </Grid>

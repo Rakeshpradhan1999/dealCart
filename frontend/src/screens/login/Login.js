@@ -38,11 +38,11 @@ const Login = ({location, history}) => {
     error: error,
     btnTxt: 'Login',
     bottomTxt: 'Haven"t an Account ?',
-    linkTxt: 'Create a new Account',
+    linkTxt: 'Signup Now',
     link: 'register',
+    forgotPassword: true,
     redirect: redirect,
     loading,
-
     input: [
       {
         label: 'Email Address',

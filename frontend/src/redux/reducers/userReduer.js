@@ -23,6 +23,12 @@ import {
   USER_UPDATE_FAIL,
   USER_UPDATE_REQUEST,
   USER_UPDATE_SUCCESS,
+  PASSWORD_FORGOT_REQUEST,
+  PASSWORD_FORGOT_SUCCESS,
+  PASSWORD_FORGOT_FAIL,
+  PASSWORD_RESET_REQUEST,
+  PASSWORD_RESET_SUCCESS,
+  PASSWORD_RESET_FAIL,
 } from '../types/userTypes';
 
 export const userRegisterReducer = (state = {}, action) => {
@@ -139,6 +145,32 @@ export const userUpdateReducer = (state = {user: {}}, action) => {
         user: {},
       };
 
+    default:
+      return state;
+  }
+};
+
+export const forgotPasswordReducer = (state = {}, action) => {
+  switch (action.type) {
+    case PASSWORD_FORGOT_REQUEST:
+      return {loading: true};
+    case PASSWORD_FORGOT_SUCCESS:
+      return {loading: false, success: true, message: action.payload};
+    case PASSWORD_FORGOT_FAIL:
+      return {loading: false, error: action.payload, success: false};
+    default:
+      return state;
+  }
+};
+
+export const resetPasswordReducer = (state = {}, action) => {
+  switch (action.type) {
+    case PASSWORD_RESET_REQUEST:
+      return {loading: true};
+    case PASSWORD_RESET_SUCCESS:
+      return {loading: false, success: true};
+    case PASSWORD_RESET_FAIL:
+      return {loading: false, error: action.payload, success: false};
     default:
       return state;
   }

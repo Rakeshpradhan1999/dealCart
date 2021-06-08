@@ -9,6 +9,7 @@ import uploadRouter from './routers/uploadRouter.js';
 import dotenv from 'dotenv';
 import orderRouter from './routers/orderRouter.js';
 import categoryRouter from './routers/categoryRouter.js';
+import contactRouter from './routers/contactRouter.js';
 import {notFound, errorHandler} from './middlewares/errorMiddleware.js';
 import morgan from 'morgan';
 
@@ -29,6 +30,7 @@ app.use ('/api/users', userRouter);
 app.use ('/api/products', productRouter);
 app.use ('/api/category', categoryRouter);
 app.use ('/api/orders', orderRouter);
+app.use ('/api/contact', contactRouter);
 app.use ('/api/upload', uploadRouter);
 app.get ('/api/config/paypal', (req, res) => {
   res.send (process.env.PAYPAL_CLIENT);

@@ -22,6 +22,12 @@ import {
   USER_ADMIN_UPDATE_REQUEST,
   USER_ADMIN_UPDATE_SUCCESS,
   USER_ADMIN_UPDATE_FAIL,
+  PASSWORD_FORGOT_REQUEST,
+  PASSWORD_FORGOT_SUCCESS,
+  PASSWORD_FORGOT_FAIL,
+  PASSWORD_RESET_REQUEST,
+  PASSWORD_RESET_SUCCESS,
+  PASSWORD_RESET_FAIL,
 } from '../types/userTypes';
 
 export const register = (name, email, password) => async dispatch => {
@@ -170,5 +176,33 @@ export const updateUser = user => async (dispatch, getState) => {
         ? error.response.data.message
         : error.message,
     });
+  }
+};
+
+export const forgotPassword = email => async (dispatch, state) => {
+  dispatch ({type: PASSWORD_FORGOT_REQUEST});
+  try {
+    const {data} = await axios.post (
+      '/api/users/forgot_password',
+      {email},
+      {headers: {'Content-Type': 'application/json'}}
+    );
+    dispatch ({type: PASSWORD_FORGOT_SUCCESS, payload: data});
+  } catch (error) {
+    dispatch ({type: PASSWORD_FORGOT_FAIL, payload: error});
+  }
+};
+
+export const resetPassword = update => async (dispatch, state) => {
+  dispatch ({type: PASSWORD_RESET_REQUEST});
+
+  try {
+    const {data} = await axios.post ('/api/users/reset_password', update, {
+      headers: {'Content-Type': 'application/json'},
+    });
+    dispatch ({type: PASSWORD_RESET_SUCCESS, payload: data});
+    console.log (data);
+  } catch (error) {
+    dispatch ({type: PASSWORD_RESET_FAIL, payload: error});
   }
 };

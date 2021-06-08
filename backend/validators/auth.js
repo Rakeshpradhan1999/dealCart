@@ -28,3 +28,12 @@ export const resetPasswordValidator = [
     .isLength ({min: 6})
     .withMessage ('Password must be at least 6 characters'),
 ];
+
+export const contactValidator = [
+  check ('name').not ().isEmpty ().withMessage ('Name is Required'),
+
+  check ('email').isEmail ().withMessage ('Must be a valid Email Address'),
+  check ('mobile').not ().isEmpty ().withMessage ('Number is Required'),
+  check ('subject').not ().isEmpty ().withMessage ('Subject is Required'),
+  check ('message').not ().isEmpty ().withMessage ('Message is Required'),
+];

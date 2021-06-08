@@ -59,20 +59,34 @@ const Form = ({formData}) => {
                 </Button>
               </form>
             </Box>
+            <Box style={{display: 'flex', justifyContent: 'space-between'}}>
+              <Typography variant="caption" style={{fontWeight: 'bold'}}>
+                {formData.bottomTxt}
+                &nbsp;&nbsp;&nbsp;
+                <Typography
+                  variant="caption"
+                  component={Link}
+                  to={`/${formData.link}?redirect=${formData.redirect}`}
+                  color="primary"
+                  style={{textDecoration: 'underline'}}
+                >
+                  {formData.linkTxt}
 
-            <Typography variant="body2">
-              {formData.bottomTxt}
-              &nbsp;&nbsp;&nbsp;
-              <Typography
-                variant="body1"
-                component={Link}
-                to={`/${formData.link}?redirect=${formData.redirect}`}
-                color="primary"
-                style={{textDecoration: 'underline'}}
-              >
-                {formData.linkTxt}
+                </Typography>
               </Typography>
-            </Typography>
+              <Typography
+                variant="body2"
+                component={Link}
+                to="/user/forgot_password"
+                style={{
+                  marginLeft: 'auto',
+                  display: 'inline-block',
+                  textDecoration: 'underline',
+                }}
+              >
+                Forgot Password
+              </Typography>
+            </Box>
           </Box>
         </Grid>
         <Grid item lg={6} className={classes.overlay}>
